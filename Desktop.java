@@ -2,9 +2,8 @@ public class Desktop {
     private Computer computer; 
     private String GPUType;
 
-    // Constructors
     public Desktop(String CPU, String RAM, String disk, String GPUType) {
-        this.computer = new Computer(CPU, RAM, disk); // Delegate to Computer
+        this.computer = new Computer(CPU, RAM, disk); 
         this.GPUType = GPUType;
     }
 
