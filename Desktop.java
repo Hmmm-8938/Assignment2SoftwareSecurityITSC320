@@ -1,3 +1,5 @@
+//changed to composition 
+
 public class Desktop {
     private Computer computer; 
     private String GPUType;
