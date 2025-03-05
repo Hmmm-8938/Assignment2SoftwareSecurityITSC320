@@ -1,19 +1,16 @@
 //Laptop computer: adds screen size to other Computer info
-public class Laptop {
-    private Computer computer;
-    private String screenSize;
+
+public final class Laptop {
+    private final Computer computer;
+    private final String screenSize;
 
     public Laptop(String CPU, String RAM, String disk, String screenSize) {
-        this.computer = new Computer(CPU, RAM, disk); // Delegate to Computer
+        this.computer = new Computer(CPU, RAM, disk);
         this.screenSize = screenSize;
     }
 
     public Computer getComputer() {
         return computer;
-    }
-
-    public void setScreenSize(String screenSize) {
-        this.screenSize = screenSize;
     }
 
     public String getScreenSize() {
