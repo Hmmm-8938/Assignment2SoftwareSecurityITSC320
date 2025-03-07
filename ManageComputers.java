@@ -120,6 +120,11 @@ public class ManageComputers {
 
                 System.out.print("Enter screen size:");
                 String screenSize = s.nextLine();
+                while (!screenSize.equals("13") && !screenSize.equals("14")) {
+                    System.out.println("Invalid screen size entered! Valid entries are '13' or '14'");
+                    System.out.println("Enter screen size:");
+                    screenSize = s.nextLine();
+                }
 
                 //Add new Laptop to ArrayList in main() method
                 computers.add(new Laptop(tempComputer.getCPU(),tempComputer.getRAM(),tempComputer.getDisk(),screenSize)); 
@@ -134,6 +139,11 @@ public class ManageComputers {
 
                 System.out.print("Enter GPU:");
                 String GPUType = s.nextLine();
+                while (!GPUType.equals("Nvidia") && !GPUType.equals("AMD")) {
+                    System.out.println("Invalid GPU entered! Valid entries are 'Nvidia' or 'AMD'");
+                    System.out.println("Enter GPU:");
+                    GPUType = s.nextLine();
+                }
 
                 //Add new Desktop to ArrayList in main() method
                 computers.add(new Desktop(tempComputer.getCPU(),tempComputer.getRAM(),tempComputer.getDisk(),GPUType)); 
@@ -258,23 +268,38 @@ public class ManageComputers {
     //-----------------------------
     //Helper method to get data common to Laptop and Desktop (CPU, RAM and disk) objects. Returns a Computer-type object
     //holding these values as attribues
-    private static Computer getComputerData(Scanner s) {
-        String CPU="";
-        String RAM="";
-        String disk="";
+private static Computer getComputerData(Scanner s) {
+        String CPU = "";
+        String RAM = "";
+        String disk = "";
 
         System.out.print("Enter CPU:");
         CPU = s.nextLine();
+        while (!CPU.equals("i5") && !CPU.equals("i7")) {
+            System.out.println("Invalid CPU entered! Valid entries are 'i5' or 'i7'");
+            System.out.println("Enter CPU:");
+            CPU = s.nextLine();
+        }
 
         System.out.print("Enter RAM:");
         RAM = s.nextLine();
+        while (!RAM.equals("16") && !RAM.equals("32")) {
+            System.out.println("Invalid RAM entered! Valid entries are '16' or '32'");
+            System.out.println("Enter RAM:");
+            RAM = s.nextLine();
+        }
 
         System.out.print("Enter Disk:");
         disk = s.nextLine();
+        while (!disk.equals("512") && !disk.equals("1024")) {
+            System.out.println("Invalid Disk entered! Valid entries are '512' or '1024'");
+            System.out.println("Enter Disk:");
+            disk = s.nextLine();
+        }
 
-        return new Computer(CPU,RAM,disk);
+        return new Computer(CPU, RAM, disk);
 
-    } //End of getComputerData
+    } // End of getComputerData
 
 
 } //End of ManageComputer class
