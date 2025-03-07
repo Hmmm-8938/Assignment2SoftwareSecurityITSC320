@@ -1,11 +1,19 @@
 //Manage Computers program: maintains an ArrayList of Computer objects, 
 //can be either Laptop or Desktop, but never just Computer-type objects themselves
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManageComputers {
 
+    private static final List<String> VALID_CPUS = Arrays.asList("i5", "i7");
+    private static final List<String> VALID_RAM = Arrays.asList("16", "32");
+    private static final List<String> VALID_DISK = Arrays.asList("512", "1024");
+    private static final List<String> VALID_GPUS = Arrays.asList("Nvidia", "AMD");
+    private static final List<String> VALID_SCREEN_SIZES = Arrays.asList("13", "14");
+    
     public static void main(String args[]) {
 
         //This ArrayList will hold all the computers in the system. Note that the type of objects expected in this
@@ -118,8 +126,8 @@ public class ManageComputers {
                 //Get CPU, RAM and Disk info
                 tempComputer = getComputerData(s); 
 
-                System.out.print("Enter screen size:");
-                String screenSize = s.nextLine();
+                // Updated with whitelist validation
+                String screenSize = getValidInput(s, "Enter screen size:", VALID_SCREEN_SIZES);
 
                 //Add new Laptop to ArrayList in main() method
                 computers.add(new Laptop(tempComputer.getCPU(),tempComputer.getRAM(),tempComputer.getDisk(),screenSize)); 
@@ -132,8 +140,8 @@ public class ManageComputers {
             //Get CPU, RAM and Disk info
                 tempComputer = getComputerData(s); 
 
-                System.out.print("Enter GPU:");
-                String GPUType = s.nextLine();
+                // Updated with whitelist validation
+                String GPUType = getValidInput(s, "Enter GPU:", VALID_GPUS);
 
                 //Add new Desktop to ArrayList in main() method
                 computers.add(new Desktop(tempComputer.getCPU(),tempComputer.getRAM(),tempComputer.getDisk(),GPUType)); 
@@ -207,8 +215,8 @@ public class ManageComputers {
                     //Get CPU, RAM and Disk info, store in temporary Computer-type object
                     tempComputer = getComputerData(s); 
 
-                    System.out.print("Enter screen size:");
-                    String screenSize = s.nextLine();
+                    // Get screen size with whitelist validation
+                    String screenSize = getValidInput(s, "Enter screen size:", VALID_SCREEN_SIZES);
 
                     //Get reference to the object in ArrayList<Computer> to edit
                     //Cast Computer to Laptop for setScreenSize call a few lines of code later
@@ -230,8 +238,8 @@ public class ManageComputers {
                     //Get CPU, RAM and Disk info
                     tempComputer = getComputerData(s); 
 
-                    System.out.print("Enter GPU:");
-                    String GPUType = s.nextLine();
+                    // Get GPU with whitelist validation
+                    String GPUType = getValidInput(s, "Enter GPU:", VALID_GPUS);
 
                     //Get reference to the object in ArrayList<Computer> to edit
                     //Cast Computer to Laptop for setScreenSize call a few lines of code later
@@ -259,22 +267,26 @@ public class ManageComputers {
     //Helper method to get data common to Laptop and Desktop (CPU, RAM and disk) objects. Returns a Computer-type object
     //holding these values as attribues
     private static Computer getComputerData(Scanner s) {
-        String CPU="";
-        String RAM="";
-        String disk="";
-
-        System.out.print("Enter CPU:");
-        CPU = s.nextLine();
-
-        System.out.print("Enter RAM:");
-        RAM = s.nextLine();
-
-        System.out.print("Enter Disk:");
-        disk = s.nextLine();
+        // Updated getComputerData with input validation
+        String CPU = getValidInput(s, "Enter CPU:", VALID_CPUS);
+        String RAM = getValidInput(s, "Enter RAM:", VALID_RAM);
+        String disk = getValidInput(s, "Enter Disk:", VALID_DISK);
 
         return new Computer(CPU,RAM,disk);
 
     } //End of getComputerData
 
-
+    // Validating Input
+    private static String getValidInput(Scanner s, String prompt, List<String> validOptions) {
+            String input;
+            do {
+                System.out.print(prompt);
+                input = s.nextLine();
+                if (!validOptions.contains(input)) {
+                    System.out.println("Invalid input! Valid options: " + validOptions);
+                }
+            } while (!validOptions.contains(input));
+            return input;
+        }
+    
 } //End of ManageComputer class
