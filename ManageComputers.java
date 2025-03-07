@@ -1,6 +1,7 @@
 //Manage Computers program: maintains an ArrayList of Computer objects, 
 //can be either Laptop or Desktop, but never just Computer-type objects themselves
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
