@@ -1,25 +1,58 @@
 //Desktop computer: adds GPU type
 
-public final class Desktop {
-    private final Computer computer;
-    private final String GPUType;
+public class Desktop implements Computable 
+{
+    private String CPU;
+    private String RAM;
+    private String disk;
+    private Computer computer; 
+    private String GPUType;
 
-    public Desktop(String CPU, String RAM, String disk, String GPUType) {
-        this.computer = new Computer(CPU, RAM, disk);
+    // Constructors
+    public Desktop() 
+    {
+    
+    } // No-arg contructor
+
+    public Desktop(String CPU, String RAM, String disk, String GPUType) 
+    {
+        this.computer = new Computer(CPU, RAM, disk); 
         this.GPUType = GPUType;
     }
 
-    // Getters
-    public Computer getComputer() {
+    public Computer getComputer() 
+    {
         return computer;
     }
 
-    public String getGPUType() {
+    public String getCPU() 
+    {
+        return this.CPU;
+    }
+
+    public String getRAM() 
+    {
+        return this.RAM;
+    }
+
+    public String getDisk() 
+    {
+        return this.disk;
+    }
+
+    public Computer getComputer() 
+    {
+        return computer;
+    }
+    
+    public String getGPUType() 
+    {
         return this.GPUType;
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "Type:Desktop\t" + computer.toString() + "\tGPU:" + this.GPUType;
     }
 }
