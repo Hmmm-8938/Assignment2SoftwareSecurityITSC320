@@ -39,11 +39,6 @@ public class Desktop implements Computable
     {
         return this.disk;
     }
-
-    public Computer getComputer() 
-    {
-        return computer;
-    }
     
     public String getGPUType() 
     {
