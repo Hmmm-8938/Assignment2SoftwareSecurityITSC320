@@ -1,4 +1,4 @@
-//changed to composition 
+//Desktop computer: adds GPU type
 
 public class Desktop implements Computable 
 {
@@ -20,7 +20,11 @@ public class Desktop implements Computable
         this.GPUType = GPUType;
     }
 
-    // Getters
+    public Computer getComputer() 
+    {
+        return computer;
+    }
+
     public String getCPU() 
     {
         return this.CPU;
@@ -45,7 +49,7 @@ public class Desktop implements Computable
     {
         return this.GPUType;
     }
-    
+
     @Override
     public String toString() 
     {

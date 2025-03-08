@@ -1,4 +1,5 @@
 //Laptop computer: adds screen size to other Computer info
+
 public class Laptop implements Computable 
 {
     private String CPU;
@@ -34,7 +35,7 @@ public class Laptop implements Computable
     {
         return this.disk;
     }
-
+    
     public Computer getComputer() 
     {
         return computer;
